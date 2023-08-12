@@ -9,7 +9,7 @@
       let pkgs = import nixpkgs { inherit system; };
       in { packages = rec { default = pkgs.callPackage ./. { }; }; }) // {
         overlays.default = final: prev: {
-          "-C" = self.packages.${system}.default;
+          "-C" = self.packages.${final.system}.default;
         };
       };
 }
